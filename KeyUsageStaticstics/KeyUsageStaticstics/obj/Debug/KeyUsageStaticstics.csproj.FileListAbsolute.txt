@@ -1,0 +1,10 @@
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\bin\Debug\KeyUsageStaticstics.exe
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\bin\Debug\KeyUsageStaticstics.pdb
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.csprojResolveAssemblyReference.cache
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.Properties.Resources.resources
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.csproj.GenerateResource.Cache
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.exe.licenses
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.exe
+C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.pdb
+C:\Users\Admin\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.exe
+C:\Users\Admin\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.pdb

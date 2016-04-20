@@ -1,0 +1,4 @@
+DevExpress.XtraCharts.ChartControl, DevExpress.XtraCharts.v13.2.UI, Version=13.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.DashboardCommon.Dashboard, DevExpress.Dashboard.v13.2.Core, Version=13.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.1.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+DevExpress.XtraPivotGrid.PivotGridControl, DevExpress.XtraPivotGrid.v13.2, Version=13.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

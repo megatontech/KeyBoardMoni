@@ -30,7 +30,6 @@ C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsa
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\LiveCharts.dll
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\System.Data.SQLite.dll
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\System.Data.SQLite.pdb
-C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\obj\Release\KeyBoardUsage.csprojResolveAssemblyReference.cache
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\obj\Release\MainWindow.baml
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\obj\Release\MainWindow.g.cs
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\obj\Release\App.g.cs

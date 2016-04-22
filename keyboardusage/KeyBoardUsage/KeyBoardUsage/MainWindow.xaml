@@ -13,8 +13,8 @@
         <TabControl Grid.Row="0" TabStripPlacement="Top" Margin="16,16,16,16">
             <TabItem Header="所有分区"  FontSize="12">
                 <StackPanel>
-                    <Button  Height="20" Content="test" Click="A_Click" />
-                    <lvc:PieChart  LegendLocation="Right" Series="{Binding totalSeries}" RenderTransformOrigin="0.501,0.896" Height="223">
+                    <Button  Height="20" Content="Update" Click="A_Click" />
+                    <lvc:PieChart Name="TotalChart" LegendLocation="Right" Series="{Binding totalSeries}" RenderTransformOrigin="0.501,0.896" Height="223">
                         <lvc:PieChart.AxisY>
                             <lvc:Axis Title="Sold Items" />
                         </lvc:PieChart.AxisY>
@@ -23,7 +23,7 @@
             </TabItem>
             <TabItem Header="主键盘区"  FontSize="12">
                 <StackPanel>
-                    <lvc:BarChart LegendLocation="Right" Series="{Binding mainSeries}">
+                    <lvc:BarChart Name="MainChart"  LegendLocation="Right" Series="{Binding mainSeries}">
                         <lvc:BarChart.AxisY>
                             <lvc:Axis Title="Sold Items" />
                         </lvc:BarChart.AxisY>
@@ -36,7 +36,7 @@
             </TabItem>
             <TabItem Header="数字键盘区"  FontSize="12">
                 <StackPanel>
-                    <lvc:BarChart LegendLocation="Right" Series="{Binding numberSeries}">
+                    <lvc:BarChart  Name="NumberChart"  LegendLocation="Right" Series="{Binding numberSeries}">
                         <lvc:BarChart.AxisY>
                             <lvc:Axis Title="Sold Items" />
                         </lvc:BarChart.AxisY>
@@ -49,7 +49,7 @@
             </TabItem>
             <TabItem Header="功能键区"  FontSize="12">
                 <StackPanel>
-                    <lvc:BarChart LegendLocation="Right" Series="{Binding funcSeries}">
+                    <lvc:BarChart  Name="FuncChart" LegendLocation="Right" Series="{Binding funcSeries}">
                         <lvc:BarChart.AxisY>
                             <lvc:Axis Title="Sold Items" />
                         </lvc:BarChart.AxisY>
@@ -62,7 +62,7 @@
             </TabItem>
             <TabItem Header="编辑控制键区"  FontSize="12">
                 <StackPanel>
-                    <lvc:BarChart LegendLocation="Right" Series="{Binding ctrlSeries}">
+                    <lvc:BarChart Name="CtrlChart"  LegendLocation="Right" Series="{Binding ctrlSeries}">
                         <lvc:BarChart.AxisY>
                             <lvc:Axis Title="Sold Items" />
                         </lvc:BarChart.AxisY>

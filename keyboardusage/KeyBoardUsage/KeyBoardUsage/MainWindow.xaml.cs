@@ -19,6 +19,7 @@ namespace KeyBoardUsage
         private Hook hook;
         private Timer timer = new Timer();
         private NotifyIcon notifyIcon = null;
+        private int CurrentGifFrameCount = 0;
 
         public MainWindow()
         {
@@ -27,6 +28,11 @@ namespace KeyBoardUsage
             timer.Tick += new System.EventHandler(TimerTick);
             sqlhelper.InitDb();
             InitializeComponent();
+            funcSeries = new SeriesCollection();
+            totalSeries = new SeriesCollection(); 
+            mainSeries = new SeriesCollection(); 
+            ctrlSeries = new SeriesCollection();
+            numberSeries = new SeriesCollection();
             initTotalChart();
             initMainChart();
             initNumberChart();
@@ -57,47 +63,61 @@ namespace KeyBoardUsage
             }
         }
 
+        /// <summary>
+        /// 按键处理事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
+            if (CurrentGifFrameCount != 20)
+            {
+                CurrentGifFrameCount = CurrentGifFrameCount + 1;
+            }
+            else
+            {
+                CurrentGifFrameCount = 0;
+            }
+            ChangeGifFrameDisp(CurrentGifFrameCount);
             TotalUsage.totalCount = TotalUsage.totalCount + 1;
             switch (e.KeyData)
             {
-                case Keys.A: DetailUsage.A = DetailUsage.A + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_A", DetailUsage.A); break; ;
-                case Keys.B: DetailUsage.B = DetailUsage.B + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_B", DetailUsage.B); break; ;
-                case Keys.C: DetailUsage.C = DetailUsage.C + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_C", DetailUsage.C); break; ;
-                case Keys.D: DetailUsage.D = DetailUsage.D + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_D", DetailUsage.D); break; ;
-                case Keys.E: DetailUsage.E = DetailUsage.E + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_E", DetailUsage.E); break; ;
-                case Keys.F: DetailUsage.F = DetailUsage.F + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_F", DetailUsage.F); break; ;
-                case Keys.G: DetailUsage.G = DetailUsage.G + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_G", DetailUsage.G); break; ;
-                case Keys.H: DetailUsage.H = DetailUsage.H + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_H", DetailUsage.H); break; ;
-                case Keys.I: DetailUsage.I = DetailUsage.I + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_I", DetailUsage.I); break; ;
-                case Keys.J: DetailUsage.J = DetailUsage.J + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_J", DetailUsage.J); break; ;
-                case Keys.K: DetailUsage.K = DetailUsage.K + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_K", DetailUsage.K); break; ;
-                case Keys.L: DetailUsage.L = DetailUsage.L + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_L", DetailUsage.L); break; ;
-                case Keys.M: DetailUsage.M = DetailUsage.M + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_M", DetailUsage.M); break; ;
-                case Keys.N: DetailUsage.N = DetailUsage.N + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_N", DetailUsage.N); break; ;
-                case Keys.O: DetailUsage.O = DetailUsage.O + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_O", DetailUsage.O); break; ;
-                case Keys.P: DetailUsage.P = DetailUsage.P + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_P", DetailUsage.P); break; ;
-                case Keys.Q: DetailUsage.Q = DetailUsage.Q + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Q", DetailUsage.Q); break; ;
-                case Keys.R: DetailUsage.R = DetailUsage.R + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_R", DetailUsage.R); break; ;
-                case Keys.S: DetailUsage.S = DetailUsage.S + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_S", DetailUsage.S); break; ;
-                case Keys.T: DetailUsage.T = DetailUsage.T + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_T", DetailUsage.T); break; ;
-                case Keys.U: DetailUsage.U = DetailUsage.U + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_U", DetailUsage.U); break; ;
-                case Keys.V: DetailUsage.V = DetailUsage.V + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_V", DetailUsage.V); break; ;
-                case Keys.W: DetailUsage.W = DetailUsage.W + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_W", DetailUsage.W); break; ;
-                case Keys.X: DetailUsage.X = DetailUsage.X + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_X", DetailUsage.X); break; ;
-                case Keys.Y: DetailUsage.Y = DetailUsage.Y + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Y", DetailUsage.Y); break; ;
-                case Keys.Z: DetailUsage.Z = DetailUsage.Z + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Z", DetailUsage.Z); break; ;
-                case Keys.D1: DetailUsage.KEY1 = DetailUsage.KEY1 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_1", DetailUsage.KEY1); break; ;
-                case Keys.D2: DetailUsage.KEY2 = DetailUsage.KEY2 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_2", DetailUsage.KEY2); break; ;
-                case Keys.D3: DetailUsage.KEY3 = DetailUsage.KEY3 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_3", DetailUsage.KEY3); break; ;
-                case Keys.D4: DetailUsage.KEY4 = DetailUsage.KEY4 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_4", DetailUsage.KEY4); break; ;
-                case Keys.D5: DetailUsage.KEY5 = DetailUsage.KEY5 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_5", DetailUsage.KEY5); break; ;
-                case Keys.D6: DetailUsage.KEY6 = DetailUsage.KEY6 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_6", DetailUsage.KEY6); break; ;
-                case Keys.D7: DetailUsage.KEY7 = DetailUsage.KEY7 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_7", DetailUsage.KEY7); break; ;
-                case Keys.D8: DetailUsage.KEY8 = DetailUsage.KEY8 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_8", DetailUsage.KEY8); break; ;
-                case Keys.D9: DetailUsage.KEY9 = DetailUsage.KEY9 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_9", DetailUsage.KEY9); break; ;
-                case Keys.D0: DetailUsage.KEY0 = DetailUsage.KEY0 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_0", DetailUsage.KEY0); break; ;
+                case Keys.A: DetailUsage.A = DetailUsage.A + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_A", DetailUsage.A); break;
+                case Keys.B: DetailUsage.B = DetailUsage.B + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_B", DetailUsage.B); break;
+                case Keys.C: DetailUsage.C = DetailUsage.C + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_C", DetailUsage.C); break;
+                case Keys.D: DetailUsage.D = DetailUsage.D + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_D", DetailUsage.D); break;
+                case Keys.E: DetailUsage.E = DetailUsage.E + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_E", DetailUsage.E); break;
+                case Keys.F: DetailUsage.F = DetailUsage.F + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_F", DetailUsage.F); break;
+                case Keys.G: DetailUsage.G = DetailUsage.G + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_G", DetailUsage.G); break;
+                case Keys.H: DetailUsage.H = DetailUsage.H + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_H", DetailUsage.H); break;
+                case Keys.I: DetailUsage.I = DetailUsage.I + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_I", DetailUsage.I); break;
+                case Keys.J: DetailUsage.J = DetailUsage.J + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_J", DetailUsage.J); break;
+                case Keys.K: DetailUsage.K = DetailUsage.K + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_K", DetailUsage.K); break;
+                case Keys.L: DetailUsage.L = DetailUsage.L + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_L", DetailUsage.L); break;
+                case Keys.M: DetailUsage.M = DetailUsage.M + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_M", DetailUsage.M); break;
+                case Keys.N: DetailUsage.N = DetailUsage.N + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_N", DetailUsage.N); break;
+                case Keys.O: DetailUsage.O = DetailUsage.O + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_O", DetailUsage.O); break;
+                case Keys.P: DetailUsage.P = DetailUsage.P + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_P", DetailUsage.P); break;
+                case Keys.Q: DetailUsage.Q = DetailUsage.Q + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Q", DetailUsage.Q); break;
+                case Keys.R: DetailUsage.R = DetailUsage.R + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_R", DetailUsage.R); break;
+                case Keys.S: DetailUsage.S = DetailUsage.S + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_S", DetailUsage.S); break;
+                case Keys.T: DetailUsage.T = DetailUsage.T + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_T", DetailUsage.T); break;
+                case Keys.U: DetailUsage.U = DetailUsage.U + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_U", DetailUsage.U); break;
+                case Keys.V: DetailUsage.V = DetailUsage.V + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_V", DetailUsage.V); break;
+                case Keys.W: DetailUsage.W = DetailUsage.W + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_W", DetailUsage.W); break;
+                case Keys.X: DetailUsage.X = DetailUsage.X + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_X", DetailUsage.X); break;
+                case Keys.Y: DetailUsage.Y = DetailUsage.Y + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Y", DetailUsage.Y); break;
+                case Keys.Z: DetailUsage.Z = DetailUsage.Z + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.mainCount = TotalUsage.mainCount + 1; ModifyCountVal("USAGE_Z", DetailUsage.Z); break;
+                case Keys.D1: DetailUsage.KEY1 = DetailUsage.KEY1 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_1", DetailUsage.KEY1); break;
+                case Keys.D2: DetailUsage.KEY2 = DetailUsage.KEY2 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_2", DetailUsage.KEY2); break;
+                case Keys.D3: DetailUsage.KEY3 = DetailUsage.KEY3 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_3", DetailUsage.KEY3); break;
+                case Keys.D4: DetailUsage.KEY4 = DetailUsage.KEY4 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_4", DetailUsage.KEY4); break;
+                case Keys.D5: DetailUsage.KEY5 = DetailUsage.KEY5 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_5", DetailUsage.KEY5); break;
+                case Keys.D6: DetailUsage.KEY6 = DetailUsage.KEY6 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_6", DetailUsage.KEY6); break;
+                case Keys.D7: DetailUsage.KEY7 = DetailUsage.KEY7 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_7", DetailUsage.KEY7); break;
+                case Keys.D8: DetailUsage.KEY8 = DetailUsage.KEY8 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_8", DetailUsage.KEY8); break;
+                case Keys.D9: DetailUsage.KEY9 = DetailUsage.KEY9 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_9", DetailUsage.KEY9); break;
+                case Keys.D0: DetailUsage.KEY0 = DetailUsage.KEY0 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.numberCount = TotalUsage.numberCount + 1; ModifyCountVal("USAGE_0", DetailUsage.KEY0); break;
                 case Keys.F1: DetailUsage.F1 = DetailUsage.F1 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.funcCount = TotalUsage.funcCount + 1; ModifyCountVal("USAGE_F1", DetailUsage.F1); break;
                 case Keys.F2: DetailUsage.F2 = DetailUsage.F2 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.funcCount = TotalUsage.funcCount + 1; ModifyCountVal("USAGE_F2", DetailUsage.F2); break;
                 case Keys.F3: DetailUsage.F3 = DetailUsage.F3 + 1; TotalUsage.totalCount = TotalUsage.totalCount + 1; TotalUsage.funcCount = TotalUsage.funcCount + 1; ModifyCountVal("USAGE_F3", DetailUsage.F3); break;
@@ -157,7 +177,9 @@ namespace KeyBoardUsage
         private void OnMouseScroll(object sender, MouseEventArgs e)
         {
         }
-
+        /// <summary>
+        /// 注册钩子
+        /// </summary>
         public void InitHooks()
         {
             hook = Hook.GetInstance();
@@ -173,6 +195,13 @@ namespace KeyBoardUsage
 
         #region Event
 
+        private void ChangeGifFrameDisp(int count)
+        {
+        }
+
+        /// <summary>
+        /// 初始化时最小化托盘
+        /// </summary>
         private void InitialTray()
         {
             //隐藏主窗体
@@ -223,6 +252,11 @@ namespace KeyBoardUsage
             }
         }
 
+        /// <summary>
+        /// 定时保存按键统计信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerTick(object sender, System.EventArgs e)
         {
             //保存数据到数据库
@@ -248,15 +282,23 @@ namespace KeyBoardUsage
             sqlhelper.UpdateTotalCount(totaldic);
         }
 
+        /// <summary>
+        ///点击刷新按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void A_Click(object sender, RoutedEventArgs e)
-        
         {
-            InitializeComponent();
             initTotalChart();
             initMainChart();
             initNumberChart();
             initFuncChart();
             initCtrlChart();
+            TotalChart.Update(true);
+            MainChart.Update(true);
+            NumberChart.Update(true);
+            FuncChart.Update(true);
+            CtrlChart.Update(true);
         }
 
         #endregion Event
@@ -264,6 +306,7 @@ namespace KeyBoardUsage
         #region Chart
 
         public SeriesCollection totalSeries { get; set; }
+        
         public SeriesCollection mainSeries { get; set; }
         public SeriesCollection numberSeries { get; set; }
         public SeriesCollection funcSeries { get; set; }
@@ -277,7 +320,6 @@ namespace KeyBoardUsage
             TotalUsage.funcCount = dic["FUNC"];
             TotalUsage.ctrlCount = dic["CTRL"];
             TotalUsage.totalCount = TotalUsage.mainCount + TotalUsage.numberCount + TotalUsage.funcCount + TotalUsage.ctrlCount;
-            totalSeries = new SeriesCollection();
             var mainkeySeries = new PieSeries
             {
                 Title = "主键盘区",
@@ -298,6 +340,10 @@ namespace KeyBoardUsage
                 Title = "编辑控制键区",
                 Values = new ChartValues<double> { TotalUsage.ctrlCount }
             };
+            while (totalSeries.Count > 0)
+            {
+                totalSeries.RemoveAt(0);
+            }
             totalSeries.Add(mainkeySeries);
             totalSeries.Add(numberSeries);
             totalSeries.Add(funcSeries);
@@ -308,13 +354,17 @@ namespace KeyBoardUsage
         private void initMainChart()
         {
             InitializeComponent();
-            mainSeries = new SeriesCollection();
+            
             var val = sqlhelper.GetCharCount();
             var charlesSeries = new BarSeries
             {
                 Title = "字母键",
                 Values = new ChartValues<double> { val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9], val[10], val[11], val[12], val[13], val[14], val[15], val[16], val[17], val[18], val[19], val[20], val[21], val[22], val[23], val[24], val[25] }
             };
+            if (mainSeries.Count > 0)
+            {
+                mainSeries.RemoveAt(0);
+            }
             mainSeries.Add(charlesSeries);
             DataContext = this;
         }
@@ -322,14 +372,17 @@ namespace KeyBoardUsage
         private void initNumberChart()
         {
             InitializeComponent();
-            numberSeries = new SeriesCollection();
+          
             var val = sqlhelper.GetNumberCount();
             var charlesSeries = new BarSeries
             {
                 Title = "数字键",
                 Values = new ChartValues<double> { val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9] }
             };
-
+            if (numberSeries.Count > 0)
+            {
+                numberSeries.RemoveAt(0);
+            }
             numberSeries.Add(charlesSeries);
             DataContext = this;
         }
@@ -337,13 +390,16 @@ namespace KeyBoardUsage
         private void initFuncChart()
         {
             InitializeComponent();
-            funcSeries = new SeriesCollection();
             var val = sqlhelper.GetFuncCount();
             var charlesSeries = new BarSeries
             {
                 Title = "功能键",
                 Values = new ChartValues<double> { val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9], val[10], val[11] }
             };
+            if (funcSeries.Count > 0)
+            {
+                funcSeries.RemoveAt(0);
+            }
             funcSeries.Add(charlesSeries);
             DataContext = this;
         }
@@ -351,12 +407,15 @@ namespace KeyBoardUsage
         private void initCtrlChart()
         {
             InitializeComponent();
-            ctrlSeries = new SeriesCollection();
             var charlesSeries = new BarSeries
             {
                 Title = "编辑控制键",
                 Values = new ChartValues<double> { 10, 11, 7, 8, 5, 4, 2, 7, 19, 20 }
             };
+            if (ctrlSeries.Count > 0)
+            {
+                ctrlSeries.RemoveAt(0);
+            }
             ctrlSeries.Add(charlesSeries);
             DataContext = this;
         }

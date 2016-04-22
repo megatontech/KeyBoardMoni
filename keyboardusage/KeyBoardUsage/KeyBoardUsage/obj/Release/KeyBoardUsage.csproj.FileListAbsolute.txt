@@ -167,3 +167,4 @@ C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsa
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\Resources\3.jpg
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\Resources\2.jpg
 C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\bin\Release\Resources\1.jpg
+C:\Users\Admin\OneDrive\KeyBoardMoni.git\keyboardusage\KeyBoardUsage\KeyBoardUsage\obj\Release\KeyBoardUsage.csprojResolveAssemblyReference.cache

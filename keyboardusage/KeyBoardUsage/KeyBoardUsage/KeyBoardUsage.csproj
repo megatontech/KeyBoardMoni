@@ -123,9 +123,9 @@
     <Content Include="DB\USAGE_0.sql" />
     <Content Include="DB\USAGE_A.sql" />
     <Content Include="DB\USAGE_TOTAL.sql" />
-    <Resource Include="Resources\0.jpg">
+    <Content Include="Resources\0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="Resources\128.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

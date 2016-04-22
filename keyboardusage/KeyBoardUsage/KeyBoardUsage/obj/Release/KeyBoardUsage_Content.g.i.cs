@@ -11,6 +11,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/usage_0.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/usage_a.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/usage_total.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/0.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/128.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/127.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/126.jpg")]

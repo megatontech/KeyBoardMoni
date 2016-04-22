@@ -105,3 +105,5 @@ C:\Users\Admin\OneDrive\KeyBoardNotification\KeyBoardNotification\KeyBoardNotifi
 C:\Users\Admin\OneDrive\KeyBoardNotification\KeyBoardNotification\KeyBoardNotification\obj\Release\KeyBoardNotification.Setting.resources
 C:\Users\Admin\OneDrive\KeyBoardNotification\KeyBoardNotification\KeyBoardNotification\obj\Release\KeyBoardNotification.csproj.GenerateResource.Cache
 C:\Users\Admin\OneDrive\KeyBoardNotification\KeyBoardNotification\KeyBoardNotification\obj\Release\KeyBoardNotification.exe.licenses
+C:\Users\Admin\OneDrive\KeyBoardMoni.git\KeyBoardNotification\KeyBoardNotification\KeyBoardNotification\obj\Release\KeyBoardNotification.exe
+C:\Users\Admin\OneDrive\KeyBoardMoni.git\KeyBoardNotification\KeyBoardNotification\KeyBoardNotification\obj\Release\KeyBoardNotification.pdb

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using HookINCS;
 using KeyBoardUsage.DB;
 using KeyBoardUsage.Model;
 using LiveCharts;
-using LiveCharts.CoreComponents;
 
 namespace KeyBoardUsage
 {
@@ -18,6 +18,7 @@ namespace KeyBoardUsage
         public SqliteHelper sqlhelper = new SqliteHelper();
         private Hook hook;
         private Timer timer = new Timer();
+        private NotifyIcon notifyIcon = null;
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace KeyBoardUsage
             initFuncChart();
             initCtrlChart();
             InitHooks();
+            InitialTray();
         }
 
         #region Hooks
@@ -171,6 +173,56 @@ namespace KeyBoardUsage
 
         #region Event
 
+        private void InitialTray()
+        {
+            //隐藏主窗体
+            this.Visibility = Visibility.Hidden;
+            notifyIcon = new NotifyIcon();
+            notifyIcon.BalloonTipText = "...";
+            notifyIcon.Text = "运行中~";
+            System.Drawing.Icon icon1 = new System.Drawing.Icon(SystemIcons.Information, 40, 40);
+            notifyIcon.Icon = icon1;
+            notifyIcon.Visible = true;
+            notifyIcon.ShowBalloonTip(2000);
+            notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(notifyIcon_MouseClick);
+            this.StateChanged += new EventHandler(SysTray_StateChanged);
+        }
+
+        /// <summary>
+        /// 鼠标单击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void notifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            //如果鼠标左键单击
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.Visibility == Visibility.Visible)
+                {
+                    this.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    this.Visibility = Visibility.Visible;
+                    this.Activate();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 窗体状态改变时候触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SysTray_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.Visibility = Visibility.Hidden;
+            }
+        }
+
         private void TimerTick(object sender, System.EventArgs e)
         {
             //保存数据到数据库
@@ -185,25 +237,26 @@ namespace KeyBoardUsage
                 modelList.Add(count);
             }
             sqlhelper.InsertModelData(modelList);
-            Dictionary<string, UsageCount> dic= new Dictionary<string, UsageCount>();
+            Dictionary<string, UsageCount> dic = new Dictionary<string, UsageCount>();
             DetailUsage.usageList = dic;
             Dictionary<string, int> totaldic = new Dictionary<string, int>();
-            totaldic.Add("TOTAL",TotalUsage.totalCount);
-            totaldic.Add("MAIN",TotalUsage.mainCount);
-            totaldic.Add("NUMBER",TotalUsage.numberCount);
-            totaldic.Add("FUNC",TotalUsage.funcCount);
+            totaldic.Add("TOTAL", TotalUsage.totalCount);
+            totaldic.Add("MAIN", TotalUsage.mainCount);
+            totaldic.Add("NUMBER", TotalUsage.numberCount);
+            totaldic.Add("FUNC", TotalUsage.funcCount);
             totaldic.Add("CTRL", TotalUsage.ctrlCount);
             sqlhelper.UpdateTotalCount(totaldic);
         }
 
         private void A_Click(object sender, RoutedEventArgs e)
+        
         {
+            InitializeComponent();
             initTotalChart();
             initMainChart();
             initNumberChart();
             initFuncChart();
             initCtrlChart();
-            System.Windows.MessageBox.Show(TotalUsage.totalCount.ToString());
         }
 
         #endregion Event
@@ -274,9 +327,9 @@ namespace KeyBoardUsage
             var charlesSeries = new BarSeries
             {
                 Title = "数字键",
-                Values = new ChartValues<double> {val[0] ,val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9]}
+                Values = new ChartValues<double> { val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9] }
             };
-            
+
             numberSeries.Add(charlesSeries);
             DataContext = this;
         }

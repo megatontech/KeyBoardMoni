@@ -8,3 +8,5 @@ C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsa
 C:\Users\megat\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.pdb
 C:\Users\Admin\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.exe
 C:\Users\Admin\OneDrive\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.pdb
+C:\Users\Admin\OneDrive\KeyBoardMoni.git\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.exe
+C:\Users\Admin\OneDrive\KeyBoardMoni.git\KeyUsageStaticstics\KeyUsageStaticstics\obj\Debug\KeyUsageStaticstics.pdb

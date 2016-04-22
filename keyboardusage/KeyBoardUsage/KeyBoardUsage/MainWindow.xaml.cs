@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using HookINCS;
 using KeyBoardUsage.DB;
 using KeyBoardUsage.Model;
@@ -70,7 +71,7 @@ namespace KeyBoardUsage
         /// <param name="e"></param>
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (CurrentGifFrameCount != 20)
+            if (CurrentGifFrameCount != 128)
             {
                 CurrentGifFrameCount = CurrentGifFrameCount + 1;
             }
@@ -197,6 +198,9 @@ namespace KeyBoardUsage
 
         private void ChangeGifFrameDisp(int count)
         {
+            string path = System.Environment.CurrentDirectory + "/Resources/" + count + ".jpg";
+            BitmapImage bitmap = new BitmapImage(new Uri(path, UriKind.Absolute));
+            img.Source = bitmap;
         }
 
         /// <summary>

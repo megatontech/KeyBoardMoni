@@ -9,7 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <TabControl Grid.Row="0" TabStripPlacement="Top" Margin="16,16,16,16">
             <TabItem Header="所有分区"  FontSize="12">
                 <StackPanel>
@@ -83,6 +83,7 @@
                             <lvc:Axis Title="Month"
               Labels="Jan, Feb , Mar, Apr, May, Jun" />
                         </lvc:PieChart.AxisX>
+                        <Image Name="img" HorizontalAlignment="Left" Height="244" Margin="10,0,0,0" Width="459"/>
                     </lvc:PieChart>
                 </StackPanel>
             </TabItem>

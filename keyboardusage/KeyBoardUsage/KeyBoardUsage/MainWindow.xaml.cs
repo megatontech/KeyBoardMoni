@@ -275,8 +275,14 @@ namespace KeyBoardUsage
                 modelList.Add(count);
             }
             sqlhelper.InsertModelData(modelList);
-            Dictionary<string, UsageCount> dic = new Dictionary<string, UsageCount>();
-            DetailUsage.usageList = dic;
+            foreach (var val in DetailUsage.usageList.Values)
+            {
+                UsageCount count = new UsageCount();
+                count.time = DateTime.Now;
+                count.KeyName = val.KeyName;
+                count.Count = 0;
+                count.TableName = val.TableName;
+            }
             Dictionary<string, int> totaldic = new Dictionary<string, int>();
             totaldic.Add("TOTAL", TotalUsage.totalCount);
             totaldic.Add("MAIN", TotalUsage.mainCount);

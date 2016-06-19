@@ -1,3 +1,5 @@
+##构建状态  Develop Branch (`master`)  
+[![Build Status](https://travis-ci.org/megatontech/KeyBoardMoni.svg?branch=master)](https://travis-ci.org/megatontech/KeyBoardMoni)
 # -键盘使用统计,你一天敲了多少次键盘，哪个键磨损最严重，F5耐久度如何，现在一目了然
 ***
 ####启动时候改成最小化在守护进程中

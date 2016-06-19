@@ -24,7 +24,7 @@ namespace KeyBoardUsage
 
         public MainWindow()
         {
-            timer.Interval = 5000;
+            timer.Interval = 60000;
             timer.Start();
             timer.Tick += new System.EventHandler(TimerTick);
             sqlhelper.InitDb();

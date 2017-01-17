@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LiveCharts</id>
+    <version>0.6.7.0</version>
+    <title>LiveCharts</title>
+    <authors>Beto Rodriguez</authors>
+    <owners>Beto Rodriguez</owners>
+    <licenseUrl>https://github.com/beto-rodriguez/Live-Charts/blob/master/LICENSE.TXT</licenseUrl>
+    <projectUrl>http://lvcharts.net/</projectUrl>
+    <iconUrl>http://lvcharts.net/Content/Images/Logos/lcred.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Animated, MVVM orientated, and easy to use .net charts</description>
+    <releaseNotes>See web site, and github repo for more info.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Plot Chart WPF WinForms .NET</tags>
+  </metadata>
+</package>
